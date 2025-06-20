@@ -67,8 +67,17 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# start nautilus file manager
+bindsym $mod+m exec --no-startup-id nautilus
+
 # start firefox browser
 bindsym $mod+x exec firefox
+
+# start thunderbird email client
+bindsym $mod+t exec thunderbird
+
+# start flameshot to take screenshot
+bindsym Print exec --no-startup-id "flameshot gui" 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -83,8 +92,11 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 
 # Lock screen with i3lock
 bindsym $mod+Shift+z exec i3lock -c 000000 --nofork 
+
 # Suspend
-bindsym $mod+Shift+s exec i3-sensible-terminal sudo pm-suspend
+bindsym $mod+Mod1+o exec i3lock -c 000000 --nofork; exec sudo pm-suspend 
+# Hibernate
+bindsym $mod+Mod1+p exec sudo pm-hibernate; exec i3lock -c 000000 --nofork
 
 # change focus
 bindsym $mod+h focus left
