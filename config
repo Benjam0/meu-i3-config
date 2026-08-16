@@ -28,7 +28,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #4ce600 #3bb300 #ffffff #77ff33   #3bb300
-client.focused_inactive #cca300 #ffcc00 #ffffff #e6b800   #ffcc00
+client.focused_inactive #e60000 #990000 #ffffff #cc0000   #990000
 client.unfocused        #cca300 #806600 #aaaaaa #b38f00   #806600
 
 # Start caffeine to block xss-lock when there's fullscreen video
@@ -47,7 +47,7 @@ exec --no-startup-id xinput set-prop 15 319 1
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l blur
 exec_always --no-startup-id xset dpms 0 0 300
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -68,19 +68,28 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start nautilus file manager
-bindsym $mod+m exec --no-startup-id nautilus
+bindsym $mod+n exec --no-startup-id nautilus
 
 # start firefox browser
 bindsym $mod+x exec firefox
 
+# start VLC media player
+bindsym $mod+m exec --no-startup-id vlc
+
 # start thunderbird email client
 bindsym $mod+t exec thunderbird
+
+# start libreoffice
+bindsym $mod+o exec loffice
 
 # start flameshot to take screenshot
 bindsym Print exec --no-startup-id "flameshot gui" 
 
 # kill focused window
 bindsym $mod+Shift+q kill
+
+# start zathura document reader 
+bindsym $mod+z exec --no-startup-id zathura
 
 set $mode_scratch Scratch (m)ove to scratch, (s)how scratch
 
@@ -103,11 +112,12 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
-# Lock screen with i3lock
-bindsym $mod+Shift+z exec i3lock -c 000000 --nofork 
+# Lock screen with betterlockscreen
+bindsym $mod+Shift+z exec betterlockscreen -l blur
 
 # Suspend
-bindsym $mod+Mod1+o exec i3lock -c 000000 --nofork; exec sudo pm-suspend 
+bindsym $mod+Mod1+o exec betterlockscreen -l blur; exec sudo pm-suspend 
+
 # Hibernate
 bindsym $mod+Mod1+p exec sudo pm-hibernate; exec i3lock -c 000000 --nofork
 
